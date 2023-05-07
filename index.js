@@ -5,29 +5,43 @@
 */
 
 let inputEl = document.getElementById("input-el")
-const convertbtn = document.getElementById("convert-btn")
-const meterfeet = document.getElementById("unit-one")
-const litergallon = document.getElementById("unit-two")
-const kilopounds = document.getElementById("unit-three")
+const convertBtn = document.getElementById("convert-btn")
+const meterToFeet = document.getElementById("unit-one")
+const literToGallon = document.getElementById("unit-two")
+const kiloPounds = document.getElementById("unit-three")
+const errorAlert = document.getElementById("alert")
+const feetRate = 3.281
+const gallonRate = 0.264
+const poundRate = 2.204
+
 
 
 function convertUnits (){
-        let input = parseInt(inputEl.value)
-        // Conversion between meter and feet
-        let toFeet = input * 3.281
-        let toMeters = input * 0.305
-        // Conversion between liter and gallons
-        let toLiter = input * 3.785
-        let toGallons = input * 0.264
-        // Conversion between kilogram and pounds
-        let toPounds = input * 2.204
-        let tokillogram = input * 0.453
- 
-    meterfeet.innerHTML = `${input} meters = ${toFeet.toFixed(3)} feet | ${input} feet = ${toMeters.toFixed(3)}  meters`
-    litergallon.innerHTML = `${input} liters = ${toGallons.toFixed(3)} gallons | ${input} gallons = ${toLiter.toFixed(3)}  litters`
-    kilopounds.innerHTML = `${input} Kilos = ${toPounds.toFixed(3)} pounds | ${input} pounds = ${tokillogram.toFixed(3)}  kilos`
-};
+    let input = parseInt(inputEl.value)
+        if ( input >= 0 ) {
+         // Conversion between meter and feet
+            let toFeet = input * feetRate
+            let toMeters = input/feetRate
+            // Conversion between liter and gallons
+            let toLiter = input/gallonRate
+            let toGallons = input * gallonRate
+            // Conversion between kilogram and pounds
+            let toPounds = input * poundRate
+            let tokillogram = input/poundRate
     
-convertbtn.addEventListener("click", function(){
+            meterToFeet.innerHTML = `${input} meters = ${toFeet.toFixed(3)} feet | ${input} feet = ${toMeters.toFixed(3)}  meters`
+            literToGallon.innerHTML = `${input} liters = ${toGallons.toFixed(3)} gallons | ${input} gallons = ${toLiter.toFixed(3)}  litters`
+            kiloPounds.innerHTML = `${input} Kilos = ${toPounds.toFixed(3)} pounds | ${input} pounds = ${tokillogram.toFixed(3)}  kilos`
+            errorAlert.textContent = ""
+        } else if (input < 0 ){
+            errorAlert.textContent = " Error : Please enter a positive number"
+            }
+        else{
+            errorAlert.textContent = "OOPS! Please enter a  number"
+            }
+    }
+      
+    
+convertBtn.addEventListener("click", function(){    
     convertUnits()
 })

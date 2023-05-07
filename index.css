@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
 }
 
 .container {
-    width: 40%;
+    width: 60%;
     margin: 60px auto 0 auto;
     
 
@@ -34,6 +35,9 @@ h3{
     font-weight: 800;
     color: #ffffff;
     text-align: center;
+}
+#alert{
+    color:#4e171d ;
 }
 
 #input-el{
@@ -101,4 +105,38 @@ h4{
     padding: 30px 0px 18px 0px;
     width: 60%;
     border-radius: 10px;
+}
+
+@media (max-width:667px) {
+    .container {
+        width: 90%;
+        margin: 20px auto 20px auto;
+  
+    }
+    .row1{
+        padding: 20px 0;
+    }
+
+    .units{
+        width: 88%;
+         padding: 20px 0px 18px 0px;
+    }
+    h3{
+        font-size: 18px;
+       
+        
+    }
+    #input-el{
+        margin:20px 0 17px 0;
+    }
+    h4{
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .conversions{
+        padding: 0 3px;
+        font-size: 12px;
+    
+    }
+
 }
